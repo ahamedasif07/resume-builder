@@ -47,16 +47,6 @@ const Genaration: React.FC<WorkExperienceProps> = ({ onNext, onBack }) => {
           AI will generate a polished, industry-standard version for you.
         </p>
 
-        {/* LinkedIn Profile */}
-        <div className="mb-6">
-          <label className="block mb-2 font-medium">LinkedIn Profile</label>
-          <input
-            type="url"
-            placeholder="https://linkedin.com/in/yourname"
-            className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring"
-          />
-        </div>
-
         {/* Progress Bar Section */}
         <div className="mt-10">
           <p className="font-medium mb-3">AI Resume Generation Progress</p>

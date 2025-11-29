@@ -7,6 +7,9 @@ import CareerSummary from "../components/CareerSummary/CareerSummary";
 import PersonalInfo from "../components/stepContainer/PersonalInfo";
 import WorkExperienceForm from "../components/WorkExperence/WorkExperence";
 import EducationPage from "../components/Education/Education";
+import Contact from "../components/Contact/Contact";
+import Genaration from "../components/Genaration/Genaration";
+import ReviewResume from "../components/ReviewResume/ReviewResume";
 
 const Page = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -27,6 +30,11 @@ const Page = () => {
       )}
       {currentStep === 3 && (
         <EducationPage onBack={prevStep} onNext={nextStep} />
+      )}
+      {currentStep === 4 && <Contact onBack={prevStep} onNext={nextStep} />}
+      {currentStep === 5 && <Genaration onBack={prevStep} onNext={nextStep} />}
+      {currentStep === 6 && (
+        <ReviewResume onBack={prevStep} onNext={nextStep} />
       )}
     </div>
   );

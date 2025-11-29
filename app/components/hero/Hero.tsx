@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Hero: React.FC = () => {
@@ -36,9 +37,11 @@ const Hero: React.FC = () => {
             you noticed by top employers.
           </p>
 
-          <button className="bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition-all">
-            Start Now
-          </button>
+          <Link href="/builder">
+            <button className="bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition-all">
+              Start Now
+            </button>
+          </Link>
         </div>
       </div>
     </section>

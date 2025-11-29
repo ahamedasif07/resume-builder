@@ -6,6 +6,7 @@ import Progressbar from "../components/header/progressbar";
 import CareerSummary from "../components/CareerSummary/CareerSummary";
 import PersonalInfo from "../components/stepContainer/PersonalInfo";
 import WorkExperienceForm from "../components/WorkExperence/WorkExperence";
+import EducationPage from "../components/Education/Education";
 
 const Page = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -23,6 +24,9 @@ const Page = () => {
       )}
       {currentStep === 2 && (
         <WorkExperienceForm onBack={prevStep} onNext={nextStep} />
+      )}
+      {currentStep === 3 && (
+        <EducationPage onBack={prevStep} onNext={nextStep} />
       )}
     </div>
   );

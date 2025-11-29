@@ -16,15 +16,31 @@ const CareerSummary: React.FC<CareerSummaryProps> = ({ onNext, onBack }) => {
         Lets create a summary that highlights your experience and goals.
       </p>
 
-      {/* Job Title Input */}
+      {/* Job Title Dropdown */}
       <div className="mt-10">
-        <label className="text-sm font-semibold">Job Title</label>
-        <input
-          type="text"
-          placeholder="Enter your most recent or current job title"
-          defaultValue="Senior Frontend Developer" // ← Default Value Added
-          className="w-full border rounded-lg px-4 py-3 mt-2 text-sm outline-none"
-        />
+        <label className="text-sm font-semibold ">Job Title</label>
+
+        <select
+          defaultValue="Senior Frontend Developer" // ← Default Selected
+          className="w-full border rounded-lg px-4 py-3 mt-2 text-sm outline-none bg-white"
+        >
+          <option value="" disabled>
+            Select your job title
+          </option>
+
+          <option value="Senior Frontend Developer">
+            Senior Frontend Developer
+          </option>
+          <option value="Frontend Developer">Frontend Developer</option>
+          <option value="Backend Developer">Backend Developer</option>
+          <option value="Full Stack Developer">Full Stack Developer</option>
+          <option value="UI/UX Designer">UI/UX Designer</option>
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="Mobile App Developer">Mobile App Developer</option>
+          <option value="Project Manager">Project Manager</option>
+          <option value="Data Analyst">Data Analyst</option>
+          <option value="DevOps Engineer">DevOps Engineer</option>
+        </select>
       </div>
 
       {/* Summary Box */}

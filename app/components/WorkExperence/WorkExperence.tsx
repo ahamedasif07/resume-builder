@@ -42,8 +42,8 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-10 px-4">
-      <div className="w-full max-w-6xl bg-white p-8 rounded-2xl shadow-sm">
+    <div className="min-h-screen  flex justify-center py-10 px-4">
+      <div className="w-full max-w-6xl bg-white p-8 rounded-2xl ">
         <h1 className="text-3xl font-bold mb-2">
           Your Work Experience & Skills
         </h1>
@@ -166,14 +166,14 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({
         </button>
 
         {/* Navigation */}
-        <div className="flex justify-between mt-10">
-          <button onClick={onBack} className="px-6 py-3 rounded-xl bg-gray-200">
+        <div className="flex justify-between mt-12">
+          <button onClick={onBack} className="bg-gray-300 w-48 py-3 rounded-lg">
             ← Back
           </button>
 
           <button
             onClick={onNext}
-            className="px-10 py-3 rounded-xl bg-green-500 text-white"
+            className="bg-[var(--primary)] text-white w-48 py-3 rounded-lg"
           >
             Next →
           </button>

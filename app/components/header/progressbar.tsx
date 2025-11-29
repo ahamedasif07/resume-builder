@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 interface ProgressProps {
-  currentStep: number; // 0 = first step, last = steps.length - 1
+  currentStep: number;
 }
 
 const steps = [
@@ -16,7 +16,9 @@ const steps = [
 
 const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const stepRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  // FIXED TYPE
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [activeStyle, setActiveStyle] = useState({ left: 0, width: 0 });
   const [backStyle, setBackStyle] = useState({ left: 0, width: 0 });
@@ -43,13 +45,11 @@ const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
     const targetCenter =
       targetRect.left + targetRect.width / 2 - containerRect.left;
 
-    // Gray line between step 1 and step 7
     setBackStyle({
       left: firstCenter,
       width: lastCenter - firstCenter,
     });
 
-    // Green active line (first to current)
     setActiveStyle({
       left: firstCenter,
       width: targetCenter - firstCenter,
@@ -58,34 +58,26 @@ const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
 
   useEffect(() => {
     calculate();
-
-    const onResize = () => calculate();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    window.addEventListener("resize", calculate);
+    return () => window.removeEventListener("resize", calculate);
   }, [currentStep]);
 
   return (
     <div className="relative w-full max-w-[1300px] mx-auto mt-10 mb-10 px-4">
       <div className="relative" ref={containerRef}>
-        {/* BACK GRAY LINE */}
+        {/* Gray Line */}
         <div
           className="absolute top-5 h-1 bg-gray-300 rounded-sm"
-          style={{
-            left: backStyle.left,
-            width: backStyle.width,
-          }}
+          style={backStyle}
         />
 
-        {/* ACTIVE GREEN LINE */}
+        {/* Active Line */}
         <div
           className="absolute top-5 h-1 bg-[var(--primary)] rounded-sm transition-all duration-500"
-          style={{
-            left: activeStyle.left,
-            width: activeStyle.width,
-          }}
+          style={activeStyle}
         />
 
-        {/* STEPS */}
+        {/* Steps */}
         <div className="flex justify-between w-full relative z-10">
           {steps.map((step, index) => {
             const isCompleted = index < currentStep;
@@ -95,9 +87,10 @@ const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
               <div
                 key={index}
                 className="flex flex-col items-center text-center"
-                ref={(el) => (stepRefs.current[index] = el)}
+                ref={(el: HTMLDivElement | null) => {
+                  stepRefs.current[index] = el; // FIXED
+                }}
               >
-                {/* Circle */}
                 <div
                   className={`w-10 h-10 z-20 flex items-center justify-center rounded-full border-2 text-sm font-semibold transition-all duration-300
                     ${
@@ -112,9 +105,8 @@ const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
                   {index + 1}
                 </div>
 
-                {/* Label */}
                 <p
-                  className={`text-xs mt-2 w-24 transition-all duration-300 font-semibold
+                  className={`text-xs mt-2 w-24 font-semibold transition-all duration-300
                     ${
                       isActive || isCompleted
                         ? "text-[var(--primary)]"

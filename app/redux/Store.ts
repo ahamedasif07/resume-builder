@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import personalReducer from "./slices/personalSlice";
+import resumeReducer from "./slices/resumeSlice";
 
 export const store = configureStore({
   reducer: {
-    personal: personalReducer,
+    resume: resumeReducer,
   },
 });
 

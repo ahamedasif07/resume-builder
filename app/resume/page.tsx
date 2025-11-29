@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Progressbar from "../components/header/progressbar";
 
 import CareerSummary from "../components/CareerSummary/CareerSummary";
-import PersonalInfo from "../components/stepContainer/PersonalInfo";
+import PersonalInfo from "../components/PersonalInformation/PersonalInfo";
 import WorkExperienceForm from "../components/WorkExperence/WorkExperence";
 import EducationPage from "../components/Education/Education";
 import Contact from "../components/Contact/Contact";

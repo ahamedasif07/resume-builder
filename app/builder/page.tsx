@@ -6,9 +6,7 @@ import CareerSummary from "../components/CareerSummary/CareerSummary";
 const page = () => {
   return (
     <div>
-      <div>
-        <Progressbar currentStep={0} />
-      </div>
+      <div></div>
       <div></div>
     </div>
   );

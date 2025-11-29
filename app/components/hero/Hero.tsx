@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
             you noticed by top employers.
           </p>
 
-          <Link href="/builder">
+          <Link href="/resume">
             <button className="bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition-all">
               Start Now
             </button>

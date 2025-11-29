@@ -18,7 +18,7 @@ const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
   return (
     <div className="relative w-full max-w-[1300px] mx-auto mt-10 mb-10">
       {/* BACK LINE */}
-      <div className="absolute top-5 left-16 w-[88%] h-1 bg-gray-300"></div>
+      <div className="absolute top-5 left-16 w-[92%] h-1 bg-gray-300"></div>
 
       {/* ACTIVE LINE */}
       <div
@@ -42,15 +42,14 @@ const Progressbar: React.FC<ProgressProps> = ({ currentStep }) => {
               {/* STEP CIRCLE */}
               <div
                 className={`w-10 h-10 z-10 flex items-center justify-center rounded-full border-2 text-sm font-semibold transition-all duration-300
-                  
-                  ${
-                    isActive
-                      ? "bg-[var(--primary)] border-[var(--primary)] text-white"
-                      : isCompleted
-                      ? "bg-[var(--primary)]/20 border-[var(--primary)] text-[var(--primary)]"
-                      : "bg-white border-gray-300 text-gray-400"
-                  }
-                `}
+    ${
+      isActive
+        ? "bg-[var(--primary)] border-[var(--primary)] text-white"
+        : isCompleted
+        ? "bg-[var(--primary)] border-[var(--primary)] text-white" // SAME AS ACTIVE
+        : "bg-white border-gray-300 text-gray-400"
+    }
+  `}
               >
                 {index + 1}
               </div>

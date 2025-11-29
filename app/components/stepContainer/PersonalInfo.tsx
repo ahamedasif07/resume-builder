@@ -5,17 +5,16 @@ import Link from "next/link";
 
 interface PersonalInfoProps {
   onNext: () => void;
-  onBack: () => void;
 }
 
-const PersonalInfo: React.FC<PersonalInfoProps> = ({ onNext, onBack }) => {
+const PersonalInfo: React.FC<PersonalInfoProps> = ({ onNext }) => {
   return (
     <div className="w-full max-w-6xl mx-auto py-16 px-6">
       {/* PROGRESS BAR */}
 
       {/* PAGE TITLE */}
       <h1 className="text-4xl font-bold ">Tell Us About Yourself</h1>
-      <p className="text-gray-500  mt-3">
+      <p className="text-gray-500  mt-4">
         Fill in your personal details so we can tailor your resume perfectly to
         your career goals.
       </p>
@@ -113,9 +112,9 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ onNext, onBack }) => {
 
       {/* BUTTONS */}
       <div className="flex justify-between mt-12">
-        <button onClick={onBack} className="bg-gray-300 w-48 py-3 rounded-lg">
-          ← Back
-        </button>
+        <Link href="/">
+          <button className="bg-gray-300 w-48 py-3 rounded-lg">← Back</button>
+        </Link>
 
         <button
           onClick={onNext}

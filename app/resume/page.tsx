@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import Progressbar from "../components/header/progressbar";
 
 import CareerSummary from "../components/CareerSummary/CareerSummary";
@@ -11,33 +13,59 @@ import Contact from "../components/Contact/Contact";
 import Genaration from "../components/Genaration/Genaration";
 import ReviewResume from "../components/ReviewResume/ReviewResume";
 
-const Page = () => {
+const Resume = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const nextStep = () => setCurrentStep((prev) => prev + 1);
   const prevStep = () => setCurrentStep((prev) => prev - 1);
 
+  const steps = [
+    { key: "step-0", component: <PersonalInfo onNext={nextStep} /> },
+    {
+      key: "step-1",
+      component: <CareerSummary onBack={prevStep} onNext={nextStep} />,
+    },
+    {
+      key: "step-2",
+      component: <WorkExperienceForm onBack={prevStep} onNext={nextStep} />,
+    },
+    {
+      key: "step-3",
+      component: <EducationPage onBack={prevStep} onNext={nextStep} />,
+    },
+    {
+      key: "step-4",
+      component: <Contact onBack={prevStep} onNext={nextStep} />,
+    },
+    {
+      key: "step-5",
+      component: <Genaration onBack={prevStep} onNext={nextStep} />,
+    },
+    {
+      key: "step-6",
+      component: <ReviewResume onBack={prevStep} onNext={nextStep} />,
+    },
+  ];
+
   return (
     <div className="w-full">
       <Progressbar currentStep={currentStep} />
 
-      {currentStep === 0 && <PersonalInfo onNext={nextStep} />}
-      {currentStep === 1 && (
-        <CareerSummary onBack={prevStep} onNext={nextStep} />
-      )}
-      {currentStep === 2 && (
-        <WorkExperienceForm onBack={prevStep} onNext={nextStep} />
-      )}
-      {currentStep === 3 && (
-        <EducationPage onBack={prevStep} onNext={nextStep} />
-      )}
-      {currentStep === 4 && <Contact onBack={prevStep} onNext={nextStep} />}
-      {currentStep === 5 && <Genaration onBack={prevStep} onNext={nextStep} />}
-      {currentStep === 6 && (
-        <ReviewResume onBack={prevStep} onNext={nextStep} />
-      )}
+      <div className="relative overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={steps[currentStep].key}
+            initial={{ opacity: 0, x: 70 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -70 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+          >
+            {steps[currentStep].component}
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
 
-export default Page;
+export default Resume;
